@@ -19,7 +19,7 @@ function App() {
     const token=localStorage.getItem('token');
     if(token){
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get(`https://blogifyodinapp.herokuapp.com/test`)
+      axios.get(`${window.location.hostname}:5000/test`)
       .then(res => {
         setLogged(true);
       })
