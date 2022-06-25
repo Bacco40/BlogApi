@@ -27,6 +27,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'index.html'));
+  });
+
 app.use('/', indexRouter);
 
 module.exports = app;
