@@ -18,7 +18,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use(helmet({crossOriginEmbedderPolicy: false,}));
+app.use(helmet({contentSecurityPolicy: false,crossOriginEmbedderPolicy: false,}));
 app.use(compression()); //Compress all routes
 app.use(cors())
 app.use(logger('dev'));
