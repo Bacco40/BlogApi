@@ -46,7 +46,7 @@ exports.post_create_post = [
     // Validate and sanitize fields.
     body('title').trim().isLength({ min: 1, max:50}).withMessage('Title must be specified, and must be maximum 50 character long.'),
     body('image_url').if(body('image_url').isLength({min: 1})).trim().isURL({ protocols: ['https'] }).withMessage('Image Url must be a https Url'),
-    body('post').trim().isLength({ min: 1, max:10000}).withMessage('Post must be specified, and must be maximum 10000 character long.'),
+    body('post').trim().isLength({ min: 1, max:20000}).withMessage('Post must be specified, and must be maximum 20000 character long.'),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
