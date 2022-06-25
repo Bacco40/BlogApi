@@ -39,7 +39,7 @@ router.get('/post/:id/update', passport.authenticate('jwt', { session: false }),
 router.put('/post/:id/update', passport.authenticate('jwt', { session: false }), post_controller.post_update_put);
 
 // GET request for one Post.
-router.get('/post/:id', passport.authenticate('jwt', { session: false }), post_controller.post_detail);
+router.get('/post/:id', post_controller.post_detail);
 
 // PUT request to publish Post.
 router.put('/post/:id/publish', passport.authenticate('jwt', { session: false }), post_controller.post_publish_put);
