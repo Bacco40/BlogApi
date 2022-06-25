@@ -23,14 +23,14 @@ function Dashboard({setLogged, logged}){
         const id = e.target.name;
         if(pressedButton === 'public'){
             const isPublic=false;
-            axios.put(`http://localhost:5000/post/${id}/publish`, {isPublic})
+            axios.put(`${window.location.hostname}:5000/post/${id}/publish`, {isPublic})
             .then(res => {
                 recovePost();
             })
         }
         else{
             const isPublic=true;
-            axios.put(`http://localhost:5000/post/${id}/publish`, {isPublic})
+            axios.put(`${window.location.hostname}:5000/post/${id}/publish`, {isPublic})
             .then(res => {
                 recovePost();
             })
@@ -43,7 +43,7 @@ function Dashboard({setLogged, logged}){
         if(id === ''){
             id=e.target.viewportElement.id;
         }
-        axios.delete(`http://localhost:5000/post/${id}/delete`)
+        axios.delete(`${window.location.hostname}:5000/post/${id}/delete`)
             .then(res => {
                 recovePost();
             })
@@ -53,7 +53,7 @@ function Dashboard({setLogged, logged}){
         if(logged === true){
             const actualUser = localStorage.getItem('user');
             setUser(localStorage.getItem('username'));
-            axios.get(`http://localhost:5000/user/${actualUser}`)
+            axios.get(`${window.location.hostname}:5000/user/${actualUser}`)
             .then(res => {
                 const published = [];
                 const unpublished= [];
@@ -83,7 +83,7 @@ function Dashboard({setLogged, logged}){
         const token=localStorage.getItem('token');
         if(token){
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.get(`http://localhost:5000/test`)
+            axios.get(`${window.location.hostname}:5000/test`)
             .then(res => {
                 setLogged(true);
             })
