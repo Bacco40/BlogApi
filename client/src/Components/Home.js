@@ -28,7 +28,7 @@ function Home({logged}){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/`)
+        axios.get(`https://blogifyodinapp.herokuapp.com/`)
         .then(res => {
             setPublicPosts(res.data.posts);
             setLoad(false);
