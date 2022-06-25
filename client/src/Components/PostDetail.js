@@ -21,7 +21,7 @@ function PostDetail({setLogged, logged}){
     function addComment(e){
         e.preventDefault();
         const comment = document.querySelector('#comment').value;
-        axios.post(`${window.location.hostname}:5000/comment/${id}/create`, {comment, user})
+        axios.post(`https://blogifyodinapp.herokuapp.com/comment/${id}/create`, {comment, user})
             .then(res => {
                 if(res.data === true){
                     setError(null)
@@ -40,7 +40,7 @@ function PostDetail({setLogged, logged}){
         if(id === ''){
             id=e.target.viewportElement.id;
         }
-        axios.delete(`${window.location.hostname}:5000/comment/${id}/delete`)
+        axios.delete(`https://blogifyodinapp.herokuapp.com/comment/${id}/delete`)
             .then(res => {
                 recovePost();
         })
@@ -52,7 +52,7 @@ function PostDetail({setLogged, logged}){
         if(id === ''){
             id=e.target.viewportElement.id;
         }
-        axios.delete(`${window.location.hostname}:5000/post/${id}/delete`)
+        axios.delete(`https://blogifyodinapp.herokuapp.com/post/${id}/delete`)
             .then(res => {
                 recovePost();
             })
@@ -60,7 +60,7 @@ function PostDetail({setLogged, logged}){
 
     function recovePost(){
         const tempUser = localStorage.getItem('user');
-        axios.get(`${window.location.hostname}:5000/post/${id}`)
+        axios.get(`https://blogifyodinapp.herokuapp.com/post/${id}`)
         .then(res => {
             if(res.data.post){
                 if(res.data.post.isPublished === true || res.data.post.creator._id === tempUser){
@@ -82,7 +82,7 @@ function PostDetail({setLogged, logged}){
         const token=localStorage.getItem('token');
         if(token){
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.get(`${window.location.hostname}:5000/test`)
+            axios.get(`https://blogifyodinapp.herokuapp.com/test`)
             .then(res => {
                 setLogged(true);
             })

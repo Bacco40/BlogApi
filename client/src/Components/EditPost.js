@@ -19,7 +19,7 @@ function EditPost({setLogged}){
         if (editorRef.current){
             const post = (editorRef.current.getContent());
             const isPublished = postEdit.isPublished;
-            axios.put(`${window.location.hostname}:5000/post/${id}/update`, {title,image_url,post,isPublished})
+            axios.put(`https://blogifyodinapp.herokuapp.com/post/${id}/update`, {title,image_url,post,isPublished})
                 .then(res => {
                    if(!res.data.errors ){
                     redirect(`/post/${id}`);
@@ -32,7 +32,7 @@ function EditPost({setLogged}){
     };
 
     function recovePost(){
-        axios.get(`${window.location.hostname}:5000/post/${id}/update`)
+        axios.get(`https://blogifyodinapp.herokuapp.com/post/${id}/update`)
         .then(res => {
             const user = localStorage.getItem('user');
             if(res.data.post){
@@ -54,7 +54,7 @@ function EditPost({setLogged}){
         const token=localStorage.getItem('token');
         if(token){
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.get(`${window.location.hostname}:5000/test`)
+            axios.get(`https://blogifyodinapp.herokuapp.com/test`)
             .then(res => {
                 recovePost();
                 setLogged(true);

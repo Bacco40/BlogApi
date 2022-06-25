@@ -9,7 +9,7 @@ function Login({setLogged}){
         e.preventDefault();
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#pass').value;
-        axios.post(`${window.location.hostname}:5000/login`, {username,password})
+        axios.post(`https://blogifyodinapp.herokuapp.com/login`, {username,password})
             .then(res => {
                 if(res.data.user !== false)
                 {

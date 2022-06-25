@@ -15,7 +15,7 @@ function CreatePost({setLogged}){
         if (editorRef.current){
             const post = (editorRef.current.getContent());
             const user = localStorage.getItem('user');
-            axios.post(`${window.location.hostname}:5000/post/create`, {title,image_url,post,user})
+            axios.post(`https://blogifyodinapp.herokuapp.com/post/create`, {title,image_url,post,user})
                 .then(res => {
                    if(!res.data.errors ){
                     redirect(`/post/${res.data._id}`);
@@ -31,7 +31,7 @@ function CreatePost({setLogged}){
         const token=localStorage.getItem('token');
         if(token){
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.get(`${window.location.hostname}:5000/test`)
+            axios.get(`https://blogifyodinapp.herokuapp.com/test`)
             .then(res => {
                 setLogged(true);
             })
