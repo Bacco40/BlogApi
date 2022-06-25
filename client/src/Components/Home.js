@@ -28,7 +28,7 @@ function Home({logged}){
     }
 
     useEffect(()=>{
-        axios.get(`${window.location.hostname}:5000/`)
+        axios.get(`/`)
         .then(res => {
             setPublicPosts(res.data.posts);
             setLoad(false);
