@@ -10,7 +10,7 @@ function Signup(){
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#pass').value;
         const confPassword =  document.querySelector('#confPass').value;
-        axios.post(`${window.location.hostname}:5000/signup`, {username,password,confPassword})
+        axios.post(`/signup`, {username,password,confPassword})
             .then(res => {
                 if(!res.data.errors){
                     redirect('/login')

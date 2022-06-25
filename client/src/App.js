@@ -19,7 +19,7 @@ function App() {
     const token=localStorage.getItem('token');
     if(token){
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('${window.location.hostname}:5000/test')
+      axios.get('/test')
       .then(res => {
         setLogged(true);
       })
