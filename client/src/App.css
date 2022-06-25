@@ -578,8 +578,10 @@ a{
   }
   .homeTitle{
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
-  .hrHome{
-    display: none;
+  .trending{
+    align-self: flex-start;
   }
 }

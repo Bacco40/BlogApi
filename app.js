@@ -13,7 +13,7 @@ const app = express();
 
 //Set up mongoose connection
 const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_URI ;
+const mongoDB = process.env.MONGODB_URI || 'mongodb+srv://Bacco40:xkGMYqaTZEgwYjZY@blogcluster.hmzpaok.mongodb.net/blog_content?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -26,10 +26,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
-
-app.get('*/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
 
 app.use('/', indexRouter);
 
