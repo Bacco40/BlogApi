@@ -37,6 +37,11 @@ function Home({logged}){
 
     return (
         <div className="homeContent">
+            <head>
+                <meta http-equiv="Content-Security-Policy" content="default-src *;
+                img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+                style-src  'self' 'unsafe-inline' *"/>
+            </head>
             <div className="cover">
                 <div className="titleContainer">
                         <h2 className="pageTitle"> Stay Curious.</h2>
